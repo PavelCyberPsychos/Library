@@ -26,6 +26,8 @@ public class Library {
     public Book findBookByISBN(String ISBN) {
         for (Book b : books) {
             if (ISBN.equals(b.getISBN())) {
+                System.out.println("Книга найдена: " + "\n" + b.toString());
+
                 return b;
             }
         }

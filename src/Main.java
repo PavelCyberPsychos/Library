@@ -49,6 +49,13 @@ public class Main {
                     String ISBN2 = scanner.nextLine();
                     library.returnBook(ISBN2);
                     break;
+                case "2":
+                    System.out.println("напишите уникальный номер книги:");
+                    library.removeBook(scanner.nextLine());
+                    break;
+                case "3":
+                    System.out.println("напишите уникальный номер книги:");
+                    library.findBookByISBN(scanner.nextLine());
             }
         }
     }
