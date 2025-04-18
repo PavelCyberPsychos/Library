@@ -4,18 +4,14 @@ public class Library {
     private static ArrayList<Book> books = new ArrayList<>();
 
     public void addBook(Book book) {
-        if (books.isEmpty()) {
-            books.add(book);
-            return;
-        }
         for (Book b : books) {
-            if (b.getISBN().equals(book.getISBN())) {
-                System.out.println("Книга с ISBN " + book.getISBN() + " уже существует в библиотеке.");
+            if (book.getISBN().equals(b.getISBN())) {
+                System.out.println("такая книга уже есть!");
                 throw new RuntimeException();
             }
-            books.add(book);
-            System.out.println("Книга успешно добавлена в библиотеку");
         }
+        System.out.println("Книга добавлена!");
+        books.add(book);
     }
 
     public void removeBook(String ISBN) {
@@ -63,30 +59,31 @@ public class Library {
     public boolean borrowBook(String ISBN) {
         for (Book b : books) {
             if (b.getISBN().equals(ISBN)) {
-                if (b.isAvailable() == true) {
+                if (b.isAvailable()) {
+                    System.out.println("книга взята");
                     b.setAvailable(false);
-                    System.out.println("Книга успешно взята");
                     return true;
                 } else {
-                    System.out.println("Книга занята!");
+                    System.out.println("Книга сейчас занята");
                     return false;
                 }
             }
-            System.out.println("Книга не найдена!");
         }
+        System.out.println("такой книги не существует");
         return false;
     }
 
     public boolean returnBook(String ISBN) {
         for (Book b : books) {
             if (b.getISBN().equals(ISBN)) {
-                if (b.isAvailable() == false) {
+                if (!(b.isAvailable())) {
                     b.setAvailable(true);
                     System.out.println("книга успешна возвращена");
                     return true;
+                } else {
+                    System.out.println("Вы не можите вернуть книгу,так как она сейчас в библиотеке");
+                    return false;
                 }
-                System.out.println("Книга не доступна");
-                return false;
             }
         }
         System.out.println("Книга не найдена!");
