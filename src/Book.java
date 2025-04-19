@@ -74,7 +74,7 @@ public class Book {
                 ", author='" + author + '\'' +
                 ", ISBN='" + ISBN + '\'' +
                 ", publicationYear=" + publicationYear +
-                ", genre='" + genre + '\'' +
+                ", Жанр='" + genre + '\'' +
                 ", Доступность=" + available +
                 '}';
     }
